@@ -20,7 +20,7 @@ class Website:
     self.text = soup.body.get_text(separator="\n", strip=True)
 
 
-# ed = Website("https://edwarddonner.com")
+# ed = Website("https://cnn.com")
 # print(ed.title)
 # print(ed.text)
 
