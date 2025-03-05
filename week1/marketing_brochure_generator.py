@@ -171,4 +171,23 @@ def create_brochure(company_name, url):
   print(result)
   return result
 
-create_brochure("HuggingFace", "https://huggingface.co")
+# create_brochure("HuggingFace", "https://huggingface.co")
+
+def stream_brochure(company_name, url):
+  print(f"Creating the brochure {company_name} ... \n \n")
+
+  stream = openai.chat.completions.create(
+    model=MODEL,
+    messages=[
+      {"role": "system", "content": system_prompt},
+      {"role": "user", "content": get_brochure_user_prompt(company_name, url)}
+    ],
+    stream = True
+  )
+  
+  for chunk in stream:
+    print( chunk.choices[0].delta.content or '', end='')
+  
+  print(f" \n Created the brochure {company_name}!! \n \n")
+
+stream_brochure("HuggingFace", "https://huggingface.co")
