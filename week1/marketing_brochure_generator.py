@@ -113,6 +113,8 @@ def get_links(url):
 
   result = response.choices[0].message.content
   print("Fetched user prompt to get additional links!! \n \n")
+  print(result)
+  print("\n\n")
 
   return json.loads(result)
 
@@ -171,7 +173,7 @@ def create_brochure(company_name, url):
   print(result)
   return result
 
-# create_brochure("HuggingFace", "https://huggingface.co")
+create_brochure("HuggingFace", "https://huggingface.co")
 
 def stream_brochure(company_name, url):
   print(f"Creating the brochure {company_name} ... \n \n")
@@ -184,10 +186,10 @@ def stream_brochure(company_name, url):
     ],
     stream = True
   )
-  
+
   for chunk in stream:
     print( chunk.choices[0].delta.content or '', end='')
   
   print(f" \n Created the brochure {company_name}!! \n \n")
 
-stream_brochure("HuggingFace", "https://huggingface.co")
+# stream_brochure("HuggingFace", "https://huggingface.co")
