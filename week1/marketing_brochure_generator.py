@@ -7,6 +7,7 @@
 # - open ai api 
 # - one shot prompting 
 # - stream back formatted results
+# - or get the complete result
 
 
 #IMPORTS
