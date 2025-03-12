@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 from IPython.display import Markdown, display
 from openai import OpenAI
+import gradio as gr
 
 
 # Load environment variables
@@ -24,21 +25,47 @@ else:
 openai = OpenAI()
 
 
-system_prompt = "You are an assistant that analyzes the contents of a text \
-and provides a response to that text"
+system_prompt = "You are a chatbot who is very argumentative; \
+you disagree with anything in the conversation and you challenge everything, in a snarky way."
 
 user_prompt = "Hey Kanwar! how are you doing today? did you start learning AI?"
 
 
-message = [
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": user_prompt}
-    ]
 
 
-response = openai.chat.completions.create(
-        model = "gpt-4o-mini",
-        messages = message
-    )
-    
-print (response.choices[0].message.content)
+
+def call_gpt(prompt):
+
+    message = [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": prompt}
+        ]
+
+
+    stream = openai.chat.completions.create(
+            model = "gpt-4o-mini",
+            messages = message,
+            stream = True
+        )
+        
+    result = ""
+    for chunk in stream:
+        result += chunk.choices[0].delta.content or ''
+        yield result
+
+
+view = gr.Interface(
+
+  fn=call_gpt,
+  inputs=[
+    gr.Textbox(label="say something:")
+  ],
+  outputs=[gr.Markdown(label="output")],
+  flagging_mode="never"
+)
+
+view.launch(share=True)
+
+
+
+  
