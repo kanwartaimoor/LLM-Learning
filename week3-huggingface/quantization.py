@@ -24,6 +24,9 @@ login(hf_token, add_to_git_credential=True)
 
 
 # Quantization Config - this allows us to load the model into memory and use less memory
+
+# paramter is in 32 bit 4 bytes it loads it in just 4 bit s
+
 quant_config = BitsAndBytesConfig(
     load_in_4bit=True,
     bnb_4bit_use_double_quant=True,
