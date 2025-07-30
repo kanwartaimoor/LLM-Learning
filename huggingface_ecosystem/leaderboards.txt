@@ -1,0 +1,12 @@
+leaderboard for code 
+https://huggingface.co/spaces/bigcode/bigcodebench-leaderboard
+
+
+https://www.vellum.ai/llm-leaderboard
+this includes closed source llms as well
+
+https://lmarena.ai/leaderboard
+this is the arena with human data not with bench marks but what humans have to say 
+you chat with two models and then you vote 
+
+there are way more leaderboards and benchmarks based on the what you want 

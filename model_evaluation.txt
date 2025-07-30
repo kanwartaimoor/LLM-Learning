@@ -1,0 +1,12 @@
+how do u evaluate the perfromence of a gen ai solution?
+
+there are two things to look for, 
+
+1. Model centric or Technical Metrics ( these metrics can be optimised )
+accuracy, perplexity, precision, recall etc
+
+2. bussiness centric / outcome metrics 
+kpi's tied to bussiness 
+roi
+improvemnet in time and cost for exmaple
+
