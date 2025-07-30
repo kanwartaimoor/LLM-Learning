@@ -8,4 +8,5 @@ messages = [
 ]
 
 response = ollama.chat(model=MODEL, messages=messages)
+
 print(response['message']['content'])
